@@ -3,7 +3,9 @@ import { useCallback } from 'react';
 import { loadFull } from "tsparticles";
 import Particles from 'react-tsparticles'
 import * as particlesConfig from '../config/particles-config.js'
-import TypeIt from "typeit-react";
+import Typewriter from 'typewriter-effect';
+import Navbar from '../navbar/Navbar';
+
 
 function Home() {
 
@@ -14,15 +16,20 @@ function Home() {
 
     return (
         <div className='home'>
+            <Navbar />
             <Particles className='particles' init={particlesInit} params={particlesConfig.PARTICLES_OPTIONS} />
-            <TypeIt 
-                className="typeit"
-                options={{
-                    strings: "Leandro López",
-                    speed: 400,
-                    waitUntilVisible: true,
-                }}
-            />
+            <h1>
+                <Typewriter
+                    options={{
+                        strings: ["Hi!, I'm Leandro Lopez", "I'm developer FullStack"],
+                        autoStart: true,
+                        loop: true,
+                        deleteSpeed: 10,
+                        cursor: '<',
+                        delay: 100,
+                    }} 
+                />
+            </h1>
         </div>
     )
 }
