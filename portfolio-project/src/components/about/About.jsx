@@ -1,6 +1,6 @@
 import React from 'react'
 import './About.css'
-import { Link } from 'react-scroll'
+import { Link, animateScroll as scroll } from 'react-scroll'
 
 const About = () => {
   return (
@@ -57,6 +57,7 @@ const About = () => {
           ></path>
         </svg>
         <p>Sydney, Australia</p>
+        <a onClick={scroll.scrollToTop}>Arriba</a>
       </div>
     </div>
 

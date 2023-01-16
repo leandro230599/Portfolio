@@ -9,15 +9,9 @@ import Navbar from '../navbar/Navbar';
 
 function Home() {
 
-    const particlesInit = useCallback(async engine => {
-        await loadFull(engine);
-    }, []);
-
-
     return (
         <div className='home'>
             <Navbar />
-            <Particles className='particles' init={particlesInit} params={particlesConfig.PARTICLES_OPTIONS} />
             <h1>
                 <Typewriter
                     options={{
