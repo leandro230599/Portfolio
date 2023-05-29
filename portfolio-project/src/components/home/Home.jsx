@@ -1,11 +1,6 @@
 import './Home.css'
-import { useCallback } from 'react';
-import { loadFull } from "tsparticles";
-import Particles from 'react-tsparticles'
-import * as particlesConfig from '../config/particles-config.js'
 import Typewriter from 'typewriter-effect';
 import Navbar from '../navbar/Navbar';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 import { Link } from 'react-scroll';
 

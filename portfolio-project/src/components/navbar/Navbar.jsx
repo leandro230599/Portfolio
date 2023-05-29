@@ -17,6 +17,11 @@ const Navbar = () => {
             SOBRE MI
           </Link>
         </div>  
+        <div className="navlink-wrapper">
+          <Link to="habilidades" spy={true} smooth={true} duration={500}>
+            HABILIDADES
+          </Link>
+        </div>  
       </div>
     </div>
   )

@@ -1,0 +1,55 @@
+.item {
+    flex-basis: auto;
+    height: 75px;
+    width: 50%;
+}
+
+.contenedor {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+
+.texto {
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.imagen {
+  width: 75px;
+  margin-right: 10px;
+}
+
+.mover:hover {
+    animation-duration: 1.8s;
+    animation-iteration-count: 3;
+    animation-name: movimiento;
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation-fill-mode: forwards;
+  }
+
+@keyframes movimiento {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(-10deg);
+    }
+    20% {
+      transform: rotate(12deg);
+    }
+    30% {
+      transform: rotate(-10deg);
+    }
+    40% {
+      transform: rotate(9deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }

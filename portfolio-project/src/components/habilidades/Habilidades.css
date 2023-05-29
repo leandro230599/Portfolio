@@ -1,0 +1,34 @@
+.habilidades {
+    height: 100vh;
+    width: 100%;
+  }
+  .habilidades-text {
+    height: 30%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+.cont {
+  display: flex;
+  height: 70%;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.contgrilla {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 1180px) {
+  .anchoresp {
+    width: 33%;
+  }
+}
+@media screen and (min-width: 480px) and (mmax-width: 1179px) {
+  .anchoresp {
+    width: 60%;
+  }
+}
