@@ -1,55 +1,65 @@
-.item {
-    flex-basis: auto;
-    height: 75px;
-    width: 50%;
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 13px;
+  background: rgba(11, 15, 22, 0.72);
+  border: 1px solid var(--border-subtle);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
-.contenedor {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: start;
+.tech-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+  border-color: color-mix(in srgb, var(--tech-accent) 55%, transparent);
+  background: rgba(17, 25, 39, 0.92);
 }
 
-.texto {
-    display: inline-block;
-    vertical-align: text-bottom;
+.tech-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.04);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 5px;
 }
 
-.imagen {
-  width: 75px;
-  margin-right: 10px;
+.tech-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--transition-fast);
 }
 
-.mover:hover {
-    animation-duration: 1.8s;
-    animation-iteration-count: 3;
-    animation-name: movimiento;
-    display: inline-block;
-    transform-origin: 70% 70%;
-    animation-fill-mode: forwards;
-  }
+.tech-icon-img.invert-dark {
+  filter: invert(1) brightness(1.08);
+}
 
-@keyframes movimiento {
-    0% {
-      transform: rotate(0deg);
-    }
-    10% {
-      transform: rotate(-10deg);
-    }
-    20% {
-      transform: rotate(12deg);
-    }
-    30% {
-      transform: rotate(-10deg);
-    }
-    40% {
-      transform: rotate(9deg);
-    }
-    50% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(0deg);
-    }
-  }
+.tech-icon-img.crop-left {
+  object-fit: cover;
+  object-position: left center;
+  border-radius: 50%;
+}
+
+.tech-pill:hover .tech-icon-img {
+  transform: scale(1.1);
+}
+
+.tech-icon-badge {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--tech-accent);
+  letter-spacing: -0.02em;
+}
+
+.tech-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}

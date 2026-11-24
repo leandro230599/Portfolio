@@ -1,30 +1,98 @@
-import React, { useState } from 'react'
-import './Navbar.css'
-import { Link } from 'react-scroll'
+import React, { useState, useEffect } from 'react';
+import './Navbar.css';
+import { SECTIONS } from '../../data/portfolioData';
 
-const Navbar = () => {
-    
+const Navbar = ({ activeSection, onNavigate, lang, onToggleLang, navLabels }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const handleNavClick = (sectionId) => {
+    setMenuOpen(false);
+    onNavigate(sectionId);
+  };
+
   return (
-    <div className="navbar">
-      <div className="navlinks">
-        <div className="navlink-wrapper">
-          <Link to="home" spy={true} smooth={true} duration={500}>
-            HOME
-          </Link>
-        </div>  
-        <div className="navlink-wrapper">
-          <Link to="about" spy={true} smooth={true} duration={500}>
-            SOBRE MI
-          </Link>
-        </div>  
-        <div className="navlink-wrapper">
-          <Link to="habilidades" spy={true} smooth={true} duration={500}>
-            HABILIDADES
-          </Link>
-        </div>  
-      </div>
-    </div>
-  )
-}
+    <header className="navbar-header">
+      <nav className="navbar-inner" aria-label="Main navigation">
+        <button
+          type="button"
+          className="navbar-brand"
+          onClick={() => handleNavClick('home')}
+          aria-label="Leandro Lopez — Go to top"
+        >
+          <span className="brand-bracket">&lt;</span>
+          <span className="brand-text">LL</span>
+          <span className="brand-bracket">/&gt;</span>
+        </button>
 
-export default Navbar
+        <ul className="navbar-links">
+          {SECTIONS.map((section) => (
+            <li key={section.id}>
+              <button
+                type="button"
+                className={`navbar-link ${activeSection === section.id ? 'active' : ''}`}
+                onClick={() => handleNavClick(section.id)}
+              >
+                {navLabels[section.id]}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div className="navbar-actions">
+          <button
+            type="button"
+            className="lang-toggle"
+            onClick={onToggleLang}
+            aria-label={lang === 'en' ? 'Switch language to Spanish' : 'Cambiar idioma a Inglés'}
+          >
+            <span className={lang === 'en' ? 'active' : ''}>EN</span>
+            <span className="lang-divider">/</span>
+            <span className={lang === 'es' ? 'active' : ''}>ES</span>
+          </button>
+
+          <button
+            type="button"
+            className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Dropdown Menu */}
+      <div className={`mobile-drawer ${menuOpen ? 'open' : ''}`} aria-hidden={!menuOpen}>
+        <ul className="mobile-drawer-links">
+          {SECTIONS.map((section) => (
+            <li key={section.id}>
+              <button
+                type="button"
+                className={`mobile-link ${activeSection === section.id ? 'active' : ''}`}
+                onClick={() => handleNavClick(section.id)}
+                tabIndex={menuOpen ? 0 : -1}
+              >
+                {navLabels[section.id]}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;
